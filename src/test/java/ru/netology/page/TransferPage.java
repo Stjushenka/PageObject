@@ -1,23 +1,27 @@
 package ru.netology.page;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import ru.netology.data.DataHelper;
+import org.openqa.selenium.Keys;
+
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
-public class TransferPage {
+    public class TransferPage {
+        private SelenideElement action = $("[data-test-id=action-transfer]");
+        private SelenideElement amount = $("[data-test-id='amount'] input");
+        private SelenideElement from = $("[data-test-id='from'] input");
 
-    private SelenideElement heading = $("[data-test-id=dashboard]");
+        public TransferPage() {
+            amount.shouldBe(visible);
+            from.shouldBe(visible);
+        }
 
-    public void transferMoney(int transferAmount, DataHelper.CardInfo cardInfo) {
-        $("[data-test-id='amount'] input").setValue(String.valueOf(transferAmount));
-        $("[data-test-id='from'] input").setValue(cardInfo.getCardNumber());
-        $("[data-test-id='action-transfer']").click();
+        public DashboardPage transferMoney(String amount, String numberCard) {
+            this.amount.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
+            this.amount.setValue(amount);
+            from.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
+            from.setValue(numberCard);
+            action.click();
+            return new DashboardPage();
+        }
     }
-
-    public void errorTransfer(){
-        $("[data-test-id=error-notification").shouldHave(Condition.exactText("Ошибка Ошибка! Произошла ошибка"));
-    }
-
-
-}

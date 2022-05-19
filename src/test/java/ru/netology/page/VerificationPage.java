@@ -14,9 +14,9 @@ public class VerificationPage {
         codeField.shouldBe(visible);
     }
 
-    public DashBoardPage validVerify(DataHelper.VerificationCode verificationCode) {
+    public DashboardPage validVerify(DataHelper.VerificationCode verificationCode) {
         codeField.setValue(verificationCode.getCode());
         verifyButton.click();
-        return new DashBoardPage();
+        return new DashboardPage();
     }
 }
