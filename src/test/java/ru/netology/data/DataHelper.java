@@ -1,6 +1,6 @@
 package ru.netology.data;
 import lombok.Value;
-
+import ru.netology.page.TransferPage;
 
 
 public class DataHelper {
@@ -30,9 +30,10 @@ public class DataHelper {
         return new VerificationCode("12345");
     }
 
+
     @Value
     public static class CardNumber {
-        private String number;
+        private String cardNumber;
     }
 
     public static CardNumber getCardNumber1() {

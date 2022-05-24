@@ -12,7 +12,6 @@ import static com.codeborne.selenide.Selenide.$$;
 public class DashboardPage {
     private SelenideElement firstButton = $$(withText("Пополнить")).first();
     private SelenideElement lastButton = $$(withText("Пополнить")).last();
-    ;
     private SelenideElement heading = $("[data-test-id=dashboard]");
     private ElementsCollection cards = $$(".list__item div");
     private final String balanceStart = "баланс: ";
